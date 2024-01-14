@@ -2,23 +2,27 @@
 export default {
     data() {
         return {
-            count: 100,
+            count: 0,
         };
     },
     methods: {
-        decresase() {
-            this.count -= 1; //this.count = this.count - 1;
+        increase() {
+            this.count += 1; //this.count = this.count + 1;
         }
     },
     mounted() {
-        console.log('El valor inicial del contador es ' - this.count);
+        console.log('El valor inicial del contador es ' + this.count);
     },
 }
 </script>
 
 <template>
+    <p>Objetivo: Tienes que llegar a 20 clicks</p>
     <h1>Contador: {{ count }}</h1>
-    <button @click="decresase">
-        Disminuir contador
+    <button @click="increase">
+        Aumentar contador
     </button>
+
+    <p v-if="count <= 10">¡Vamos tú puedes!</p>
+    <p v-else>Ya te falta muy poco...</p>
 </template>
