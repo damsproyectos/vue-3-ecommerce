@@ -1,3 +1,15 @@
+<script lang="ts">
+import Cart from '../components/Cart.vue'
+
+export default {
+    components: {
+        Cart
+    }
+    // props: ['details']
+}
+</script>
+
 <template>
-    CartView
+    <!-- <Cart :details="details"/> -->
+    <Cart />
 </template>
