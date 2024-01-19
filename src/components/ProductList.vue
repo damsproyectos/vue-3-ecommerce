@@ -1,17 +1,14 @@
 <script lang="ts">
-import type { CartDetail, Product } from '../model/types';
+import type { Product } from '../model/types';
 import ProductCard from './ProductCard.vue';
-import Cart from './Cart.vue';
 
 export default {
     components: {
         ProductCard,
-        Cart
     },
-    props: ['details'],
     data() {
         return {
-            products: <Array<Product>> [
+            products: [
                 { name: 'Silla', price: 56, id: 1},
                 { name: 'Monitor', price: 450, id: 2},
                 { name: 'Micrófono', price: 120, id: 3},
@@ -27,25 +24,17 @@ export default {
                 { name: 'Pantalla', price: 512, id: 6},
                 { name: 'Usb', price: 10, id: 7},
                 { name: 'Silla', price: 56, id: 1},
-            ],
+            ] as Product []
         };
-    },
-    methods: {
-        onProductAdded(productId: number) {
-            // console.log('Agregar producto ' + productId);           
-        }
-    },
+    }
 }
 </script>
 
 <template>
     <v-row>
-        <v-col v-for="p in products" cols="4">
+        <v-col v-for="p in products" :key="p.id" cols="4">
             <ProductCard
-                :product="p"
-                @addProduct="onProductAdded(p.id)"/>
+                :product="p" />
         </v-col>
     </v-row>
-    <!-- <Cart :details="[{productId: 3, quantity: 100}]"/> -->
-    <!-- <Cart :details="details"/> -->
 </template>

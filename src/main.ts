@@ -1,9 +1,7 @@
 import { createApp } from "vue";
-// import ProductList from "./examples/ProductList.vue";
 import App from "./App.vue";
 
 // Vuetify
-// import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
@@ -15,6 +13,9 @@ import { createPinia } from "pinia";
 //Vue Router
 import router from "./router";
 
+// Icons
+import '@mdi/font/css/materialdesignicons.css'
+
 const vuetify = createVuetify({
   components,
   directives,
@@ -23,7 +24,6 @@ const vuetify = createVuetify({
     }
 });
 
-// const app = createApp(ProductList)
 const app = createApp(App)
 
 app.use(vuetify)

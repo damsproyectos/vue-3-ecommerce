@@ -1,16 +1,7 @@
 <script lang="ts">
-// import type { PropType } from 'vue';
-// import type { CartDetail } from '@/model/types';
 import { useCartStore } from '@/stores/cart';
-import { RouterLink } from 'vue-router';
 
 export default {
-    // props: {
-    //    details: {
-    //         type: Object as PropType<Array<CartDetail>>,
-    //         required: true
-    //     }  
-    // },
     methods: {
         decrementQuantity(productId: number) {
             this.cartStore.decrement(productId);
@@ -27,15 +18,9 @@ export default {
           return useCartStore();  
         },
         details() {
-            // const cartStore = useCartStore();
             return this.cartStore.details;
         }   
     }
-    // data() {
-    //     return {
-    //         details: <Array<CartDetail>>[]
-    //     };
-    // },
 }
 </script>
 
@@ -47,20 +32,31 @@ export default {
             </v-card-title>
 
             <v-list v-if="details.length > 0">
-                <v-list-item v-for="detail in details" :value="detail.productId">
-                    <v-list-item-title>
+                <v-list-item 
+                    v-for="detail in details" 
+                    :key="detail.productId">
+                <v-list-item-title>
                         Product {{ detail.productId }} 
-                        <v-btn @click="decrementQuantity(detail.productId)">
-                            -   
-                        </v-btn>
-                        (Qty: {{ detail.quantity }})
-                        <v-btn @click="incrementQuantity(detail.productId)">
-                            +
-                        </v-btn>
-                        <v-btn @click="deleteProduct(detail.productId)">
-                            Eliminar
-                        </v-btn>
-                    </v-list-item-title>
+                         
+                        <v-btn 
+                           class="ml-2"
+                           icon="mdi-minus"
+                           size="x-small" 
+                           @click="decrementQuantity(detail.productId)" />                              
+                        Cantidad: {{ detail.quantity }}
+                        
+                        <v-btn
+                           icon="mdi-plus" 
+                           size="x-small" 
+                           @click="incrementQuantity(detail.productId)" />
+                       
+                        <v-btn 
+                           class="ml-2"
+                           icon="mdi-delete"
+                           size="x-small"
+                        @click="deleteProduct(detail.productId)" />
+
+                </v-list-item-title>
                 </v-list-item>
             </v-list>
             <p v-else>
