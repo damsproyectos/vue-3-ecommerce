@@ -10,13 +10,10 @@ export default {
             required: true
         } 
     },
-    // emits: ['addProduct'],
     methods: {
-        onAddButtonClick() {
-            //console.log('Agregando producto ' + this.product.id);
-            // this.$emit('addProduct'); 
+        onAddButtonClick() { 
             const cartStore = useCartStore();
-            cartStore.addProduct(this.product.id);
+            cartStore.addProduct(this.product);
         }
     },
 }

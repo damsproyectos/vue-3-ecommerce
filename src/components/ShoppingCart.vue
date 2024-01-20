@@ -34,28 +34,27 @@ export default {
             <v-list v-if="details.length > 0">
                 <v-list-item 
                     v-for="detail in details" 
-                    :key="detail.productId">
+                    :key="detail.product.id">
                 <v-list-item-title>
-                        Product {{ detail.productId }} 
+                        {{ detail.product.name }} 
                          
                         <v-btn 
                            class="ml-2"
                            icon="mdi-minus"
                            size="x-small" 
-                           @click="decrementQuantity(detail.productId)" />                              
+                           @click="decrementQuantity(detail.product.id)" />                              
                         Cantidad: {{ detail.quantity }}
                         
                         <v-btn
                            icon="mdi-plus" 
                            size="x-small" 
-                           @click="incrementQuantity(detail.productId)" />
+                           @click="incrementQuantity(detail.product.id)" />
                        
                         <v-btn 
                            class="ml-2"
                            icon="mdi-delete"
                            size="x-small"
-                        @click="deleteProduct(detail.productId)" />
-
+                        @click="deleteProduct(detail.product.id)" />
                 </v-list-item-title>
                 </v-list-item>
             </v-list>
