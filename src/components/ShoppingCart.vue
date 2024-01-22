@@ -1,25 +1,14 @@
 <script lang="ts">
 import { useCartStore } from '@/stores/cart';
+import { mapState } from 'pinia';
+import ShoppingCartItem from './ShoppingCartItem.vue';
 
 export default {
-    methods: {
-        decrementQuantity(productId: number) {
-            this.cartStore.decrement(productId);
-        },
-        incrementQuantity(productId: number) {
-            this.cartStore.increment(productId);
-        },
-        deleteProduct(productId: number) {
-            this.cartStore.deleteProduct(productId);
-        }
+    components: { 
+        ShoppingCartItem 
     },
     computed: {
-        cartStore() {
-          return useCartStore();  
-        },
-        details() {
-            return this.cartStore.details;
-        }   
+        ...mapState(useCartStore, ['details'])   
     }
 }
 </script>
@@ -31,33 +20,13 @@ export default {
                 Productos agregados al carrito
             </v-card-title>
 
-            <v-list v-if="details.length > 0">
-                <v-list-item 
+            <v-list v-if="details.length > 0">               
+               
+                <ShoppingCartItem 
                     v-for="detail in details" 
-                    :key="detail.product.id">
-                <v-list-item-title>
-                        {{ detail.product.name }} 
-                         
-                        <v-btn 
-                           class="ml-2"
-                           icon="mdi-minus"
-                           size="x-small" 
-                           @click="decrementQuantity(detail.product.id)" />                              
-                        Cantidad: {{ detail.quantity }}
-                        
-                        <v-btn
-                           icon="mdi-plus" 
-                           size="x-small" 
-                           @click="incrementQuantity(detail.product.id)" />
-                       
-                        <v-btn 
-                           class="ml-2"
-                           icon="mdi-delete"
-                           size="x-small"
-                        @click="deleteProduct(detail.product.id)" />
-                </v-list-item-title>
-                </v-list-item>
-            </v-list>
+                    :key="detail.product.id"
+                    :detail="detail" />
+            </v-list> 
             <p v-else>
                 Aún no has agregado items a tu carrito de compras.
                 Haz <RouterLink to="/">click aquí</RouterLink> para ver los productos disponibles.
