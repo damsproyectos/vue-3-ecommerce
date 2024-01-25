@@ -15,18 +15,35 @@ export default {
 
 <template>
     <v-card class="mt-4">
-        <v-card-text>
             <v-card-title>
                 Productos agregados al carrito
             </v-card-title>
 
-            <v-list v-if="details.length > 0">               
-               
-                <ShoppingCartItem 
-                    v-for="detail in details" 
-                    :key="detail.product.id"
-                    :detail="detail" />
-            </v-list> 
+        <v-card-text>
+            <v-table v-if="details.length > 0">
+                <thead>
+                <tr>
+                    <th class="text-left">
+                    Producto
+                    </th>
+                    <th class="text-center">
+                    Cantidad
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th class="text-left">
+                    Subtotal
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <ShoppingCartItem 
+                        v-for="detail in details" 
+                        :key="detail.product.id"
+                        :detail="detail" />
+                </tbody>
+            </v-table> 
             <p v-else>
                 Aún no has agregado items a tu carrito de compras.
                 Haz <RouterLink to="/">click aquí</RouterLink> para ver los productos disponibles.

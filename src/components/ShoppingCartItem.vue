@@ -22,37 +22,47 @@ export default {
       productImageUrl() {
          return this.detail.product.image 
          ?? 'https://cdn.vuetifyjs.com/images/cards/sunshine.jpg';
+      },
+      subTotal() {
+         return this.detail.product.price * this.detail.quantity;
       }
    }
  }
 </script>
 
 <template>        
-     <v-list-item>
-         <v-avatar size="40px">
-            <v-img :src="productImageUrl" />
-         </v-avatar>
-         
-         <v-list-item-title>
-                              {{ detail.product.name }} 
-                              
-                              <v-btn 
-                                 class="ml-2"
-                                 icon="mdi-minus"
-                                 size="x-small" 
-                                 @click="decrementQuantity(detail.product.id)" />                              
-                              Cantidad: {{ detail.quantity }}
-                              
-                              <v-btn
-                                 icon="mdi-plus" 
-                                 size="x-small" 
-                                 @click="incrementQuantity(detail.product.id)" />
-                           
-                              <v-btn 
-                                 class="ml-2"
-                                 icon="mdi-delete"
-                                 size="x-small"
-                              @click="deleteProduct(detail.product.id)" />
-         </v-list-item-title>
-      </v-list-item>
+      <tr>
+         <td>
+            <v-avatar size="40px">
+               <v-img :src="productImageUrl" />
+            </v-avatar>
+            {{ detail.product.name }}
+         </td>
+         <td class="text-center">
+            <v-btn    
+                  class="ml-2"
+                  icon="mdi-minus"
+                  size="x-small" 
+                  @click="decrementQuantity(detail.product.id)" />                              
+               Cantidad: {{ detail.quantity }}
+               
+               <v-btn
+                  icon="mdi-plus" 
+                  size="x-small" 
+                  @click="incrementQuantity(detail.product.id)" />
+         </td>
+         <td>
+            ${{ detail.product.price }}
+         </td>
+         <td>
+            ${{ subTotal }}
+         </td>
+         <td>
+            <v-btn 
+                  class="ml-2"
+                  icon="mdi-delete"
+                  size="x-small"
+                  @click="deleteProduct(detail.product.id)" />
+         </td>
+      </tr>
 </template>
