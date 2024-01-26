@@ -1,9 +1,11 @@
 <script lang="ts">
-import ShoppingCart from '../components/ShoppingCart.vue'
+import ShoppingCart from '../components/cart/ShoppingCart.vue'
+import SummaryCard from '../components/cart/SummaryCard.vue';
 
 export default {
     components: {
-        ShoppingCart
+        ShoppingCart,
+        SummaryCard
     }
 }
 </script>
@@ -14,7 +16,7 @@ export default {
             <ShoppingCart />
         </v-col>
         <v-col cols="4">
-            Total a pagar
+            <SummaryCard />
         </v-col>
     </v-row>
 </template>

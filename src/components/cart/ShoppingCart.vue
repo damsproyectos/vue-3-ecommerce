@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-    <v-card class="mt-4">
+    <v-card>
             <v-card-title>
                 Productos agregados al carrito
             </v-card-title>
