@@ -105,7 +105,35 @@ export const useProductsStore = defineStore('products', {
                 name: 'Cable HDMI', 
                 price: 56, 
                 id: 15
+            }, 
+            { 
+                name: 'Mouse Gamer', 
+                price: 512, 
+                id: 16,
+                image: '/products/mouse.jpg',
+                categoryId: 2
             },
+            { 
+                name: 'Computador de Escritorio', 
+                price: 450, 
+                id: 17,
+                image: '/products/computador.jpg',
+                categoryId: 2
+            }, 
+            { 
+                name: 'Silla', 
+                price: 56, 
+                id: 18, 
+                image: '/products/silla.webp',
+                categoryId: 1
+            },
+            { 
+                name: 'Portátil', 
+                price: 450, 
+                id: 19, 
+                image: 'https://fastly.picsum.photos/id/6/5000/3333.jpg?hmac=pq9FRpg2xkAQ7J9JTrBtyFcp9-qvlu8ycAi7bUHlL7I',
+                categoryId: 1
+            },          
         ] as Product []
     }),
     getters: {
