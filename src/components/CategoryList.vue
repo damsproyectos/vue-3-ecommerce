@@ -1,7 +1,11 @@
 <script lang="ts">
 import type { Category } from '@/model/types';
+import OrderOptions from './left/OrderOptions.vue';
 
 export default {
+    components: {
+        OrderOptions
+    },
     data() {
         return {
             categories: [{
@@ -25,13 +29,13 @@ export default {
                 name: 'home'
             });  
         },
-        selectCategory(categoryId: number) {
+        goToCategory(categoryId: number) {
             this.$router.push({
                  name: 'category', 
                  params: { categoryId } 
             })
-        }
-    },
+        },
+    }
 }
 </script>
 
@@ -48,19 +52,13 @@ export default {
                 v-for="category in categories"
                 :key="category.id"
                 link
-                @click="selectCategory(category.id)"
-
-                :title="`${ category.name }`"
-            >
+                @click="goToCategory(category.id)"
+                :title="`${ category.name }`">
             </v-list-item>
 
-        <v-divider class="my-2"></v-divider>
+            <v-divider class="my-2"></v-divider>
 
-        <v-list-subheader>Orden</v-list-subheader>
-        <v-list-item color="grey-lighten-4" link title="Por precio">
-        </v-list-item>
-        <v-list-item color="grey-lighten-4" link title="Por nombre">
-        </v-list-item>
+            <OrderOptions />
         </v-list>
     </v-sheet>
 </template>
