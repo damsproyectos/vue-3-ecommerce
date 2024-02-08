@@ -24,16 +24,12 @@ export default {
   mounted() {
     console.log('mounted');
 
-    setTimeout(() => {
       const productsStore = useProductsStore();
       productsStore.fetchProducts();
-    }, 4000);
     
-    setTimeout(() => {
       const categoriesStore = useCategoriesStore();
       categoriesStore.fetchCategories();
-    }, 2000); 
-  },
+  }
 }
 </script>
 
